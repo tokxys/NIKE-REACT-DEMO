@@ -5,16 +5,19 @@ import nikelogoActive from "assets/nike-active.png"
 import product from "assets/product.png"
 import productActive from "assets/product-active.png"
 import Nike from "./NIKE/Nike"
-
+import Category from "./Category/Category"
+import {withRouter,Redirect} from "react-router-dom"
 class Tab extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'redTab',
+      selectedTab: 'Nike',
       hidden: false,
       fullScreen: true,
+
     };
   }
+
 
   render() {
     return (
@@ -40,15 +43,18 @@ class Tab extends Component {
               background: `url(${nikelogoActive}) center center /  21px 21px no-repeat` }}
             />
             }
-            selected={this.state.selectedTab === 'NIKE'}
+            selected={
+              this.state.selectedTab === 'NIKE'
+            }
 
             onPress={() => {
               this.setState({
                 selectedTab: 'NIKE',
               });
+              this.props.history.push("/nike")
             }}
           >
-          <Nike></Nike>
+           <Nike></Nike>
           </TabBar.Item>
           <TabBar.Item
             icon={
@@ -73,56 +79,17 @@ class Tab extends Component {
               this.setState({
                 selectedTab: 'Product',
               });
-            }}
-            data-seed="logId1"
-          >
-            111
-          </TabBar.Item>
-          <TabBar.Item
-            icon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  21px 21px no-repeat' }}
-              />
-            }
-            selectedIcon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat' }}
-              />
-            }
-            title="Friend"
-            key="Friend"
-
-            selected={this.state.selectedTab === 'greenTab'}
-            onPress={() => {
-              this.setState({
-                selectedTab: 'greenTab',
-              });
+              this.props.history.push("/product")
             }}
           >
-
+            <Category></Category>
+            
           </TabBar.Item>
-          <TabBar.Item
-            icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
-            selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
-            title="My"
-            key="my"
-            selected={this.state.selectedTab === 'yellowTab'}
-            onPress={() => {
-              this.setState({
-                selectedTab: 'yellowTab',
-              });
-            }}
-          >
 
-          </TabBar.Item>
         </TabBar>
       </div>
     );
   }
 }
 
-export default Tab;
+export default withRouter(Tab);

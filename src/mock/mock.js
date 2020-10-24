@@ -1,7 +1,8 @@
-const hotcate = require('./cookbook-hotcate.json')
-
+const ajClassify = require('./aj-classify.json')
+const category = require('./nike-category.json')
 module.exports = () => {
   return {
-    hotcate
+    ajClassify,
+    category
   }
 }

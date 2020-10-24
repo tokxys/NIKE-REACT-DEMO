@@ -10,21 +10,22 @@ class Classify extends Component {
   }
   async componentDidMount() {
     let result=await get({
-      url:"/api/hotcate"
+      url:"/api/ajclassify"
     })
-    console.log("hah",result)
+    
     let data = result.map(value=>({
       key:value.id,
       title:value.title,
       img:value.img
     })
     )
+    console.log("data",data)
     this.setState({
       hotList:data
     })
 
   }
-
+  
   _renderItem=dataItem=>(
     <div className="item">
       <img src={dataItem.img}/>

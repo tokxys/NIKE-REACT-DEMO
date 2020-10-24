@@ -1,3 +1,4 @@
 {
-    "/api/hotcate":"/hotcate"
+    "/api/ajclassify":"/ajclassify",
+    "/api/category":"/category"
 }
